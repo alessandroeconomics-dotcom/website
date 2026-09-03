@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BICCe — Brazilian Institute for Climate and Environmental Economics</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+:root {
+  --teal: #007C7A;
+  --teal-dark: #005F5D;
+  --teal-light: #009E9B;
+  --dark: #1D1D1D;
+  --gray-800: #333333;
+  --gray-600: #555555;
+  --gray-400: #999999;
+  --gray-200: #E0E0E0;
+  --gray-100: #F2F2F2;
+  --white: #FFFFFF;
+  --font: 'Libre Franklin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); color: var(--dark); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+.container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+/* ─── HEADER ─── */
+.site-header {
+  background: var(--white);
+  border-bottom: 3px solid var(--teal);
+  position: sticky; top: 0; z-index: 100;
+}
+.header-top {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 24px; max-width: 1140px; margin: 0 auto;
+}
+.logo-link { display: flex; align-items: flex-end; gap: 2px; text-decoration: none; color: var(--dark); }
+.logo-globe { height: 52px; width: auto; object-fit: contain; }
+.logo-text-block { display: flex; flex-direction: column; padding-bottom: 2px; }
+.logo-name { font-size: 1.5rem; font-weight: 800; color: var(--teal); letter-spacing: -0.02em; line-height: 1; }
+.logo-sub { font-size: 0.6rem; color: var(--gray-600); letter-spacing: 0.02em; max-width: 280px; line-height: 1.3; }
+.header-right { display: flex; align-items: center; gap: 16px; }
+.lang-switch { display: flex; border: 1px solid var(--gray-200); border-radius: 4px; overflow: hidden; }
+.lang-btn {
+  background: none; border: none; padding: 5px 12px; font-family: var(--font);
+  font-size: 0.75rem; font-weight: 600; color: var(--gray-600); cursor: pointer; transition: 0.2s;
+}
+.lang-btn.active { background: var(--teal); color: var(--white); }
+.lang-btn:not(.active):hover { background: var(--gray-100); }
+.search-btn { background: none; border: none; cursor: pointer; padding: 6px; color: var(--gray-600); transition: 0.2s; }
+.search-btn:hover { color: var(--teal); }
+.search-btn svg { width: 20px; height: 20px; }
+
+/* ─── NAV ─── */
+
+.main-nav { background: var(--gray-100); border-bottom: 1px solid var(--gray-200); }
+.nav-inner { display: flex; gap: 0; max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+.nav-inner a {
+  text-decoration: none; color: var(--gray-800); font-size: 0.88rem; font-weight: 500;
+  padding: 12px 18px; transition: 0.2s; border-bottom: 2px solid transparent; margin-bottom: -1px;
+}
+.nav-inner a:hover { color: var(--teal); background: rgba(0,124,122,0.04); }
+.nav-inner a.active { color: var(--teal); border-bottom-color: var(--teal); }
+.mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+.mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--dark); margin: 5px 0; }
+
+/* ─── HERO ─── */
+.hero { background: var(--teal); position: relative; overflow: hidden; }
+.hero-inner { display: grid; grid-template-columns: 1fr 1fr; min-height: 400px; }
+.hero-content {
+  padding: 60px 24px; max-width: 570px; margin-left: auto;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.hero h1 { font-size: 2.2rem; font-weight: 800; color: var(--white); line-height: 1.2; margin-bottom: 16px; letter-spacing: -0.01em; }
+.hero p { font-size: 1rem; color: rgba(255,255,255,0.82); line-height: 1.65; max-width: 480px; }
+.hero-image {
+  background:
+    linear-gradient(135deg, rgba(0,94,93,0.6), rgba(0,158,155,0.3)),
+    url("data:image/svg+xml,%3Csvg width='400' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='l' width='30' height='30' patternUnits='userSpaceOnUse'%3E%3Ccircle cx='15' cy='15' r='1' fill='rgba(255,255,255,0.08)'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='400' height='400' fill='url(%23l)'/%3E%3C/svg%3E");
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-image-inner { color: rgba(255,255,255,0.3); }
+.hero-image-inner svg { width: 120px; height: 120px; }
+
+/* ─── QUICK CARDS ─── */
+.quick-cards { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--gray-200); }
+.quick-card {
+  display: flex; align-items: flex-start; gap: 14px; padding: 28px 24px;
+  text-decoration: none; color: var(--dark); border-right: 1px solid var(--gray-200); transition: 0.2s;
+}
+.quick-card:last-child { border-right: none; }
+.quick-card:hover { background: var(--gray-100); }
+.qc-icon { width: 40px; height: 40px; background: var(--teal); border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.qc-icon svg { width: 20px; height: 20px; color: var(--white); }
+.qc-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 2px; }
+.qc-desc { font-size: 0.82rem; color: var(--gray-600); }
+
+/* ─── SECTION ─── */
+.section { padding: 48px 0; }
+.section-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; }
+.section-header h2 { font-size: 1.55rem; font-weight: 800; color: var(--dark); }
+.section-header a { font-size: 0.85rem; font-weight: 600; color: var(--teal); text-decoration: none; }
+.section-header a:hover { text-decoration: underline; }
+.section--gray { background: var(--gray-100); }
+
+/* ─── NEWS ─── */
+.news-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.news-card {
+  display: grid; grid-template-columns: 200px 1fr; text-decoration: none; color: var(--dark);
+  background: var(--white); border: 1px solid var(--gray-200); border-radius: 4px; overflow: hidden; transition: 0.2s;
+}
+.news-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+.news-card--featured { grid-column: 1 / -1; grid-template-columns: 420px 1fr; }
+.nc-img { min-height: 140px; display: flex; align-items: center; justify-content: center; }
+.news-card--featured .nc-img { min-height: 240px; }
+.nc-img svg { width: 36px; height: 36px; color: rgba(255,255,255,0.35); }
+.nc-body { padding: 20px 22px; display: flex; flex-direction: column; justify-content: center; }
+.nc-date { font-size: 0.75rem; color: var(--gray-400); margin-bottom: 6px; font-weight: 500; }
+.nc-body h3 { font-size: 1.05rem; font-weight: 700; line-height: 1.35; margin-bottom: 8px; }
+.news-card--featured .nc-body h3 { font-size: 1.3rem; }
+.nc-body p { font-size: 0.88rem; color: var(--gray-600); line-height: 1.55; margin-bottom: 10px; }
+.nc-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.nc-tag { font-size: 0.7rem; color: var(--teal); font-weight: 600; }
+.nc-tag::after { content: ' |'; color: var(--gray-400); margin-left: 6px; }
+.nc-tag:last-child::after { content: ''; }
+
+/* ─── PUBLICATIONS ─── */
+.pub-list { border-top: 1px solid var(--gray-200); }
+.pub-item {
+  display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center;
+  padding: 18px 0; border-bottom: 1px solid var(--gray-200); text-decoration: none; color: var(--dark); transition: 0.15s;
+}
+.pub-item:hover { background: rgba(0,124,122,0.03); margin: 0 -12px; padding-left: 12px; padding-right: 12px; }
+.pub-item h3 { font-size: 0.95rem; font-weight: 600; line-height: 1.4; margin-bottom: 4px; }
+.pub-meta { font-size: 0.82rem; color: var(--gray-600); }
+.pub-meta em { color: var(--teal-dark); font-style: normal; font-weight: 600; }
+.pub-type {
+  font-size: 0.72rem; font-weight: 600; color: var(--gray-600); background: var(--gray-100);
+  padding: 4px 10px; border-radius: 3px; white-space: nowrap; text-transform: uppercase; letter-spacing: 0.02em;
+}
+
+/* ─── RESEARCH GROUPS (icon cards) ─── */
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.research-card {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--white);
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 28px 16px;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.research-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
+.rc-icon-svg {
+  width: 56px; height: 56px;
+  opacity: 0.9;
+  transition: transform 0.3s;
+}
+.research-card:hover .rc-icon-svg { transform: scale(1.12); }
+.rc-label {
+  position: relative; z-index: 2;
+  text-align: center;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+
+/* ─── FOOTER ─── */
+.site-footer { background: var(--dark); color: rgba(255,255,255,0.6); padding: 48px 0 24px; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 36px; margin-bottom: 36px; }
+.footer-brand .f-logo { height: 48px; margin-bottom: 12px; filter: brightness(0) invert(1); }
+.footer-brand p { font-size: 0.85rem; line-height: 1.55; max-width: 280px; }
+.site-footer h4 { color: var(--white); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; }
+.site-footer ul { list-style: none; }
+.site-footer ul li { margin-bottom: 8px; }
+.site-footer ul a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: 0.2s; }
+.site-footer ul a:hover { color: var(--white); }
+.footer-contact p { font-size: 0.82rem; margin-bottom: 4px; }
+.footer-contact a { color: rgba(255,255,255,0.7); text-decoration: none; }
+.footer-contact a:hover { color: var(--white); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px;
+  display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem;
+}
+.footer-links { display: flex; gap: 16px; }
+.footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-weight: 500; transition: 0.2s; }
+.footer-links a:hover { color: var(--white); }
+
+/* ─── MOBILE NAV ─── */
+.mobile-nav {
+  display: none; position: fixed; inset: 0; background: rgba(0,124,122,0.97);
+  z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a { color: var(--white); text-decoration: none; font-size: 1.3rem; font-weight: 700; padding: 10px 24px; }
+.mobile-nav a:hover { opacity: 0.7; }
+.mobile-nav-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: var(--white); font-size: 2rem; cursor: pointer; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .main-nav { display: none; }
+  .mobile-toggle { display: block; }
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-image { display: none; }
+  .hero-content { max-width: 100%; padding: 48px 24px; }
+  .quick-cards { grid-template-columns: 1fr; }
+  .quick-card { border-right: none; border-bottom: 1px solid var(--gray-200); }
+  .quick-card:last-child { border-bottom: none; }
+  .news-grid { grid-template-columns: 1fr; }
+  .news-card { grid-template-columns: 160px 1fr; }
+  .news-card--featured { grid-template-columns: 1fr; }
+  .news-card--featured .nc-img { min-height: 180px; }
+  .research-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .news-card { grid-template-columns: 1fr; }
+  .nc-img { min-height: 120px !important; }
+  .research-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 1.7rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════ HEADER ══════════════════════ -->
+<header class="site-header">
+  <div class="header-top">
+    <a href="bicee-pt-website.html" class="logo-link">
+      <img src="data:image/png;base64,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" alt="BICCe" class="logo-globe">
+      <div class="logo-text-block">
+        <span class="logo-name">BICCe</span>
+        <span class="logo-sub" data-en="Brazilian Institute for Climate and Environmental Economics" data-pt="Instituto Brasileiro de Economia Climática e Ambiental">Brazilian Institute for Climate and Environmental Economics</span>
+      </div>
+    </a>
+    <div class="header-right">
+      <div class="lang-switch">
+        <button class="lang-btn" onclick="window.location.href='bicee-website.html'">EN</button>
+        <button class="lang-btn active" onclick="setLang('pt')">PT</button>
+      </div>
+      <button class="search-btn" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      </button>
+      <button class="mobile-toggle" onclick="openMobileNav()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="main-nav">
+  <div class="nav-inner">
+    <a href="#expertise" class="active" data-en="Our expertise" data-pt="Especialidades">Our expertise</a>
+    <a href="bicee-pt-projects.html" data-en="Projects" data-pt="Projetos">Projects</a>
+    <a href="bicee-pt-publications.html" data-en="Publications" data-pt="Publicações">Publications</a>
+    <a href="bicee-pt-employees.html" data-en="Employees" data-pt="Equipe">Employees</a>
+    <a href="bicee-pt-research.html" data-en="Research groups" data-pt="Grupos de pesquisa">Research groups</a>
+    <a href="bicee-pt-about.html" data-en="About" data-pt="Sobre">About</a>
+    <a href="bicee-pt-events.html" data-en="Events" data-pt="Eventos">Events</a>
+    <a href="bicee-pt-newsletter.html" data-en="Newsletter" data-pt="Newsletter">Newsletter</a>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="closeMobileNav()">&times;</button>
+  <a href="#expertise" onclick="closeMobileNav()" data-en="Our expertise" data-pt="Especialidades">Our expertise</a>
+  <a href="bicee-pt-projects.html" onclick="closeMobileNav()" data-en="Projects" data-pt="Projetos">Projects</a>
+  <a href="bicee-pt-publications.html" onclick="closeMobileNav()" data-en="Publications" data-pt="Publicações">Publications</a>
+  <a href="bicee-pt-employees.html" onclick="closeMobileNav()" data-en="Employees" data-pt="Equipe">Employees</a>
+  <a href="bicee-pt-research.html" onclick="closeMobileNav()" data-en="Research groups" data-pt="Grupos de pesquisa">Research groups</a>
+  <a href="bicee-pt-about.html" onclick="closeMobileNav()" data-en="About" data-pt="Sobre">About</a>
+  <a href="bicee-pt-events.html" onclick="closeMobileNav()" data-en="Events" data-pt="Eventos">Events</a>
+  <a href="bicee-pt-newsletter.html" onclick="closeMobileNav()" data-en="Newsletter" data-pt="Newsletter">Newsletter</a>
+</div>
+
+<!-- ══════════════════════ HERO ══════════════════════ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <h1 data-en="Brazil's institute for climate and environmental economics research" data-pt="O instituto brasileiro de pesquisa em economia climática e ambiental">Brazil's institute for climate and environmental economics research</h1>
+      <p data-en="BICCe advances interdisciplinary research on climate change, environmental policy, and sustainable development to shape evidence-based decisions for Brazil and the world." data-pt="O BICCe promove pesquisa interdisciplinar sobre mudanças climáticas, política ambiental e desenvolvimento sustentável para decisões baseadas em evidências para o Brasil e o mundo.">BICCe advances interdisciplinary research on climate change, environmental policy, and sustainable development to shape evidence-based decisions for Brazil and the world.</p>
+    </div>
+    <div class="hero-image">
+      <div class="hero-image-inner">
+        <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="0.8">
+          <circle cx="60" cy="60" r="50"/><ellipse cx="60" cy="60" rx="50" ry="20"/>
+          <ellipse cx="60" cy="60" rx="20" ry="50"/><line x1="60" y1="10" x2="60" y2="110"/><line x1="10" y1="60" x2="110" y2="60"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ QUICK CARDS ══════════════════════ -->
+<div class="container" id="expertise">
+  <div class="quick-cards">
+    <a href="#" class="quick-card">
+      <div class="qc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
+      <div><div class="qc-title" data-en="Our expertise" data-pt="Especialidades">Our expertise</div><div class="qc-desc" data-en="Find research per topics" data-pt="Encontre pesquisas por tema">Find research per topics</div></div>
+    </a>
+    <a href="#" class="quick-card">
+      <div class="qc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+      <div><div class="qc-title" data-en="Projects" data-pt="Projetos">Projects</div><div class="qc-desc" data-en="Projects BICCe is involved in" data-pt="Projetos em que o BICCe está envolvido">Projects BICCe is involved in</div></div>
+    </a>
+    <a href="#" class="quick-card">
+      <div class="qc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <div><div class="qc-title" data-en="Employees" data-pt="Equipe">Employees</div><div class="qc-desc" data-en="Find researchers and employees" data-pt="Encontre pesquisadores e funcionários">Find researchers and employees</div></div>
+    </a>
+  </div>
+</div>
+
+<!-- ══════════════════════ NEWS ══════════════════════ -->
+<section class="section" id="projects">
+  <div class="container">
+    <div class="section-header">
+      <h2 data-en="News" data-pt="Notícias">News</h2>
+      <a href="#" data-en="Show all articles" data-pt="Ver todos os artigos">Show all articles</a>
+    </div>
+    <div class="news-grid">
+      <a href="#" class="news-card news-card--featured">
+        <div class="nc-img" style="background:linear-gradient(135deg,#005F5D,#009E9B)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <div class="nc-body">
+          <div class="nc-date" data-en="Published 12.3.2026" data-pt="Publicado em 12.3.2026">Published 12.3.2026</div>
+          <h3 data-en="Amazon carbon sink weakening faster than predicted: new BICCe study" data-pt="Sumidouro de carbono da Amazônia enfraquecendo mais rápido que o previsto: novo estudo do BICCe">Amazon carbon sink weakening faster than predicted: new BICCe study</h3>
+          <p data-en="A comprehensive analysis of 15 years of satellite and ground data reveals that the Amazon's ability to absorb CO₂ is declining at rates 30% faster than current IPCC models predict, with significant implications for global carbon budgets." data-pt="Uma análise abrangente de 15 anos de dados revela que a capacidade da Amazônia de absorver CO₂ está diminuindo 30% mais rápido do que os modelos do IPCC preveem, com implicações significativas para os orçamentos globais de carbono.">A comprehensive analysis of 15 years of satellite and ground data reveals that the Amazon's ability to absorb CO₂ is declining at rates 30% faster than current IPCC models predict, with significant implications for global carbon budgets.</p>
+          <div class="nc-tags"><span class="nc-tag" data-en="Amazon" data-pt="Amazônia">Amazon</span><span class="nc-tag" data-en="Carbon budget" data-pt="Orçamento de carbono">Carbon budget</span><span class="nc-tag" data-en="Climate risk" data-pt="Risco climático">Climate risk</span></div>
+        </div>
+      </a>
+      <a href="#" class="news-card">
+        <div class="nc-img" style="background:linear-gradient(135deg,#2E8B57,#3CA870)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></div>
+        <div class="nc-body">
+          <div class="nc-date" data-en="Published 28.2.2026" data-pt="Publicado em 28.2.2026">Published 28.2.2026</div>
+          <h3 data-en="Economic impact of climate-driven agricultural losses in the Cerrado" data-pt="Impacto econômico das perdas agrícolas causadas pelo clima no Cerrado">Economic impact of climate-driven agricultural losses in the Cerrado</h3>
+          <p data-en="New modelling shows rising temperatures could reduce soybean yields by up to 20% in the Brazilian Cerrado by 2040." data-pt="Nova modelagem mostra que temperaturas crescentes podem reduzir a produtividade da soja em até 20% no Cerrado brasileiro até 2040.">New modelling shows rising temperatures could reduce soybean yields by up to 20% in the Brazilian Cerrado by 2040.</p>
+          <div class="nc-tags"><span class="nc-tag" data-en="Agriculture" data-pt="Agricultura">Agriculture</span><span class="nc-tag" data-en="Cerrado" data-pt="Cerrado">Cerrado</span></div>
+        </div>
+      </a>
+      <a href="#" class="news-card">
+        <div class="nc-img" style="background:linear-gradient(135deg,#1B7FA3,#2394BC)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+        <div class="nc-body">
+          <div class="nc-date" data-en="Published 15.2.2026" data-pt="Publicado em 15.2.2026">Published 15.2.2026</div>
+          <h3 data-en="BICCe researchers selected for IPCC AR7 working groups" data-pt="Pesquisadores do BICCe selecionados para grupos de trabalho do AR7 do IPCC">BICCe researchers selected for IPCC AR7 working groups</h3>
+          <p data-en="Four BICCe researchers have been appointed as lead authors for the IPCC's Seventh Assessment Report." data-pt="Quatro pesquisadores do BICCe foram nomeados autores líderes para o Sétimo Relatório de Avaliação do IPCC.">Four BICCe researchers have been appointed as lead authors for the IPCC's Seventh Assessment Report.</p>
+          <div class="nc-tags"><span class="nc-tag">IPCC</span><span class="nc-tag" data-en="Global policy" data-pt="Política global">Global policy</span></div>
+        </div>
+      </a>
+      <a href="#" class="news-card">
+        <div class="nc-img" style="background:linear-gradient(135deg,#C5972C,#D4A843)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div class="nc-body">
+          <div class="nc-date" data-en="Published 3.2.2026" data-pt="Publicado em 3.2.2026">Published 3.2.2026</div>
+          <h3 data-en="Carbon pricing and social equity: lessons from Brazilian tax reform" data-pt="Precificação de carbono e equidade social: lições da reforma tributária brasileira">Carbon pricing and social equity: lessons from Brazilian tax reform</h3>
+          <p data-en="Analysis of how carbon tax designs can protect low-income households while driving emission reductions." data-pt="Análise de como modelos de imposto sobre carbono podem proteger famílias de baixa renda enquanto reduzem emissões.">Analysis of how carbon tax designs can protect low-income households while driving emission reductions.</p>
+          <div class="nc-tags"><span class="nc-tag" data-en="Carbon market" data-pt="Mercado de carbono">Carbon market</span><span class="nc-tag" data-en="Equity" data-pt="Equidade">Equity</span></div>
+        </div>
+      </a>
+      <a href="#" class="news-card">
+        <div class="nc-img" style="background:linear-gradient(135deg,#6B4C8A,#8160A8)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+        <div class="nc-body">
+          <div class="nc-date" data-en="Published 22.1.2026" data-pt="Publicado em 22.1.2026">Published 22.1.2026</div>
+          <h3 data-en="Mangrove restoration: the blue carbon opportunity for Brazil's Northeast" data-pt="Restauração de manguezais: a oportunidade de carbono azul para o Nordeste do Brasil">Mangrove restoration: the blue carbon opportunity for Brazil's Northeast</h3>
+          <p data-en="Study quantifies the potential of mangrove restoration in capturing up to 12 MtCO₂e annually along Brazil's northeastern coast." data-pt="Estudo quantifica o potencial da restauração de manguezais em capturar até 12 MtCO₂e anualmente ao longo da costa nordestina.">Study quantifies the potential of mangrove restoration in capturing up to 12 MtCO₂e annually along Brazil's northeastern coast.</p>
+          <div class="nc-tags"><span class="nc-tag" data-en="Blue carbon" data-pt="Carbono azul">Blue carbon</span><span class="nc-tag" data-en="Restoration" data-pt="Restauração">Restoration</span></div>
+        </div>
+      </a>
+      <a href="#" class="news-card">
+        <div class="nc-img" style="background:linear-gradient(135deg,#C75640,#D06B56)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div>
+        <div class="nc-body">
+          <div class="nc-date" data-en="Published 18.12.2025" data-pt="Publicado em 18.12.2025">Published 18.12.2025</div>
+          <h3 data-en="Climate and trade — Brazil's position on CBAM and COP30 outcomes" data-pt="Clima e comércio — posição do Brasil sobre CBAM e resultados da COP30">Climate and trade — Brazil's position on CBAM and COP30 outcomes</h3>
+          <p data-en="How Brazil's trade relationships and climate commitments intersect ahead of COP30 in Belém." data-pt="Como as relações comerciais e os compromissos climáticos do Brasil se cruzam antes da COP30 em Belém.">How Brazil's trade relationships and climate commitments intersect ahead of COP30 in Belém.</p>
+          <div class="nc-tags"><span class="nc-tag" data-en="International policy" data-pt="Política internacional">International policy</span><span class="nc-tag" data-en="Climate negotiations" data-pt="Negociações climáticas">Climate negotiations</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ PUBLICATIONS ══════════════════════ -->
+<section class="section section--gray" id="publications">
+  <div class="container">
+    <div class="section-header">
+      <h2 data-en="Publications" data-pt="Publicações">Publications</h2>
+      <a href="#" data-en="Go to overview" data-pt="Ver todas">Go to overview</a>
+    </div>
+    <div class="pub-list">
+      <a href="#" class="pub-item">
+        <div><h3 data-en="Deforestation-driven feedback loops and their effect on regional rainfall in the Amazon Basin" data-pt="Ciclos de retroalimentação do desmatamento e seu efeito nas chuvas regionais na Bacia Amazônica">Deforestation-driven feedback loops and their effect on regional rainfall in the Amazon Basin</h3><div class="pub-meta">Maria Santos, João Oliveira, Ana Costa et al. — <em>Nature Climate Change</em>, 2026</div></div>
+        <span class="pub-type" data-en="Academic article" data-pt="Artigo acadêmico">Academic article</span>
+      </a>
+      <a href="#" class="pub-item">
+        <div><h3 data-en="The macroeconomic costs of extreme weather events in Latin America: a panel data approach" data-pt="Os custos macroeconômicos de eventos climáticos extremos na América Latina: abordagem de dados em painel">The macroeconomic costs of extreme weather events in Latin America: a panel data approach</h3><div class="pub-meta">Carlos Mendes, Lúcia Ferreira — <em>Journal of Environmental Economics and Management</em>, 2026</div></div>
+        <span class="pub-type" data-en="Academic article" data-pt="Artigo acadêmico">Academic article</span>
+      </a>
+      <a href="#" class="pub-item">
+        <div><h3 data-en="Bioenergy with carbon capture (BECCS) feasibility in Brazil's sugarcane sector" data-pt="Viabilidade da bioenergia com captura de carbono (BECCS) no setor sucroenergético do Brasil">Bioenergy with carbon capture (BECCS) feasibility in Brazil's sugarcane sector</h3><div class="pub-meta">Rafael Lima, Fernanda Almeida, Pedro Rocha et al. — <em>Energy Policy</em>, 2025</div></div>
+        <span class="pub-type" data-en="Academic article" data-pt="Artigo acadêmico">Academic article</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ RESEARCH GROUPS ══════════════════════ -->
+<section class="section" id="research">
+  <div class="container">
+    <div class="section-header"><h2 data-en="Research groups" data-pt="Grupos de pesquisa">Research groups</h2></div>
+    <div class="research-grid">
+      <a href="#" class="research-card" style="background:linear-gradient(135deg,#1B7FA3,#2AAFCF)">
+        <svg class="rc-icon-svg" viewBox="0 0 64 64" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="32" cy="32" r="22"/><path d="M10 32h44"/><path d="M32 10c-8 6-8 18-8 22s0 16 8 22"/><path d="M32 10c8 6 8 18 8 22s0 16-8 22"/><path d="M14 20h36"/><path d="M14 44h36"/>
+          <path d="M52 12l6-4m0 0h-5m5 0v5" stroke-width="1.5"/><path d="M56 32h4M56 24l3-2" stroke-width="1.5"/>
+        </svg>
+        <div class="rc-label" data-en="Climate Policy" data-pt="Política Climática">Climate Policy</div>
+      </a>
+      <a href="#" class="research-card" style="background:linear-gradient(135deg,#2E8B57,#4DB87A)">
+        <svg class="rc-icon-svg" viewBox="0 0 64 64" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 56h48"/><path d="M16 56V36"/><path d="M16 36c0-10 8-20 20-24 0 6-2 14-8 18" fill="rgba(255,255,255,0.15)"/>
+          <path d="M16 36c0-10 8-20 20-24 0 6-2 14-8 18"/><path d="M16 42c4-6 12-10 20-8" /><circle cx="44" cy="20" r="3"/><path d="M44 23v6"/>
+          <path d="M36 56V44"/><path d="M36 44c-4-8 2-16 10-18 0 4-1 10-5 13" fill="rgba(255,255,255,0.15)"/><path d="M36 44c-4-8 2-16 10-18 0 4-1 10-5 13"/>
+        </svg>
+        <div class="rc-label" data-en="Environmental Economics" data-pt="Economia Ambiental">Environmental Economics</div>
+      </a>
+      <a href="#" class="research-card" style="background:linear-gradient(135deg,#1A6B3C,#28A45C)">
+        <svg class="rc-icon-svg" viewBox="0 0 64 64" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 52c6-4 10-14 24-14s18 10 24 14" fill="rgba(255,255,255,0.1)"/><path d="M8 52c6-4 10-14 24-14s18 10 24 14"/>
+          <path d="M32 38V16"/><path d="M24 24c4 2 8 0 8-8 0 8 4 10 8 8"/><path d="M26 32c3 1 6 0 6-6 0 6 3 7 6 6"/>
+          <path d="M12 48c2-6 6-8 12-6" stroke-width="1.5"/><path d="M44 42c4-2 6 0 8 6" stroke-width="1.5"/>
+          <path d="M20 56s4-8 12-4 12-4 12-4" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+        </svg>
+        <div class="rc-label" data-en="Amazon &amp; Tropical Forests" data-pt="Amazônia e Florestas Tropicais">Amazon &amp; Tropical Forests</div>
+      </a>
+      <a href="#" class="research-card" style="background:linear-gradient(135deg,#5A6E3A,#7A9A4A)">
+        <svg class="rc-icon-svg" viewBox="0 0 64 64" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 56l8-20 8 10 8-26 8 16 8-12 8 32"/><circle cx="32" cy="14" r="6"/><path d="M29 17l3 4 6-8" stroke-width="1.5"/>
+          <path d="M12 52h40" stroke-width="1" opacity="0.4"/><path d="M12 44h40" stroke-width="1" opacity="0.3"/>
+        </svg>
+        <div class="rc-label" data-en="Carbon Markets" data-pt="Mercados de Carbono">Carbon Markets</div>
+      </a>
+      <a href="#" class="research-card" style="background:linear-gradient(135deg,#C5972C,#E0B044)">
+        <svg class="rc-icon-svg" viewBox="0 0 64 64" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="32" cy="28" r="10"/><path d="M32 18v-8M32 38v8M22 28h-8M42 28h8"/><path d="M24.9 20.9L19 15M39.1 35.1L45 41M24.9 35.1L19 41M39.1 20.9L45 15" stroke-width="1.5"/>
+          <path d="M10 52h12l4-6h12l4 6h12" stroke-width="2"/><path d="M22 52v4h20v-4" stroke-width="1.5"/>
+        </svg>
+        <div class="rc-label" data-en="Energy Transition" data-pt="Transição Energética">Energy Transition</div>
+      </a>
+      <a href="#" class="research-card" style="background:linear-gradient(135deg,#C75640,#E07060)">
+        <svg class="rc-icon-svg" viewBox="0 0 64 64" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M32 52c-10 0-18-8-18-18 0-12 18-24 18-24s18 12 18 24c0 10-8 18-18 18z" fill="rgba(255,255,255,0.1)"/>
+          <path d="M32 52c-10 0-18-8-18-18 0-12 18-24 18-24s18 12 18 24c0 10-8 18-18 18z"/>
+          <path d="M24 36a8 8 0 0 0 16 0c0-6-8-14-8-14s-8 8-8 14z" fill="rgba(255,255,255,0.15)"/>
+          <path d="M32 18v-6M26 14l6 4 6-4" stroke-width="1.5"/>
+        </svg>
+        <div class="rc-label" data-en="Climate &amp; Health" data-pt="Clima e Saúde">Climate &amp; Health</div>
+      </a>
+      <a href="#" class="research-card" style="background:linear-gradient(135deg,#3A7CA5,#5AA0C8)">
+        <svg class="rc-icon-svg" viewBox="0 0 64 64" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 44c4-4 8-2 12-6s4-8 8-8 4 6 8 8 8 2 12 6"/><path d="M8 52c4-4 8-2 12-6s4-8 8-8 4 6 8 8 8 2 12 6"/>
+          <rect x="26" y="16" width="12" height="22" rx="2" fill="rgba(255,255,255,0.1)"/><rect x="26" y="16" width="12" height="22" rx="2"/>
+          <path d="M30 20h4M30 24h4M30 28h4"/><path d="M32 38v6"/>
+          <path d="M20 14l4 4M44 14l-4 4" stroke-width="1.5"/>
+        </svg>
+        <div class="rc-label" data-en="Adaptation &amp; Resilience" data-pt="Adaptação e Resiliência">Adaptation &amp; Resilience</div>
+      </a>
+      <a href="#" class="research-card" style="background:linear-gradient(135deg,#2A7F62,#3CAA82)">
+        <svg class="rc-icon-svg" viewBox="0 0 64 64" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 44c-2-4 0-10 6-12 2-6 8-10 14-8 4-4 12-4 14 2 4 1 6 5 4 10" /><path d="M12 44h40"/>
+          <path d="M20 44v8"/><path d="M20 52c0-3 4-6 4-6s4 3 4 6" fill="rgba(255,255,255,0.1)"/><path d="M20 52c0-3 4-6 4-6s4 3 4 6"/>
+          <path d="M36 44v10"/><path d="M33 48c0 0 3-3 3-3s3 3 3 3" stroke-width="1.5"/><path d="M34 52c0 0 2-2 2-2s2 2 2 2" stroke-width="1.5"/>
+          <circle cx="46" cy="36" r="2" fill="rgba(255,255,255,0.4)"/><circle cx="16" cy="38" r="1.5" fill="rgba(255,255,255,0.3)"/>
+          <path d="M42 48a4 4 0 0 1 4-4" stroke-width="1.5"/>
+        </svg>
+        <div class="rc-label" data-en="Biodiversity &amp; Ecosystem Services" data-pt="Biodiversidade e Serviços Ecossistêmicos">Biodiversity &amp; Ecosystem Services</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ FOOTER ══════════════════════ -->
+<footer class="site-footer" id="about">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="Bicce_Logo.png" alt="BICCe" class="f-logo">
+        <p data-en="Brazilian Institute for Climate and Environmental Economics. Independent, interdisciplinary, evidence-based research for sustainable development." data-pt="Instituto Brasileiro de Economia Climática e Ambiental. Pesquisa independente, interdisciplinar e baseada em evidências para o desenvolvimento sustentável.">Brazilian Institute for Climate and Environmental Economics. Independent, interdisciplinary, evidence-based research for sustainable development.</p>
+      </div>
+      <div>
+        <h4 data-en="Research" data-pt="Pesquisa">Research</h4>
+        <ul>
+          <li><a href="#" data-en="Our expertise" data-pt="Especialidades">Our expertise</a></li>
+          <li><a href="#" data-en="Projects" data-pt="Projetos">Projects</a></li>
+          <li><a href="#" data-en="Publications" data-pt="Publicações">Publications</a></li>
+          <li><a href="#" data-en="Data &amp; Tools" data-pt="Dados e Ferramentas">Data &amp; Tools</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-en="Institute" data-pt="Instituto">Institute</h4>
+        <ul>
+          <li><a href="#" data-en="About BICCe" data-pt="Sobre o BICCe">About BICCe</a></li>
+          <li><a href="#" data-en="Employees" data-pt="Equipe">Employees</a></li>
+          <li><a href="#" data-en="Careers" data-pt="Carreiras">Careers</a></li>
+          <li><a href="#" data-en="Events" data-pt="Eventos">Events</a></li>
+          <li><a href="#" data-en="Newsletter" data-pt="Newsletter">Newsletter</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4 data-en="Contact" data-pt="Contato">Contact</h4>
+        <p style="margin-top:4px"><a href="mailto:contato@bicce.ufsc.br">contato@bicce.ufsc.br</a></p>
+        <p style="margin-top:14px; line-height:1.55" data-en="Rua Roberto Sampaio Gonzaga<br>Centro Socioeconômico, Bloco G, 2º andar<br>Trindade — Florianópolis/SC<br>CEP: 88040-900<br>Brazil" data-pt="Rua Roberto Sampaio Gonzaga<br>Centro Socioeconômico, Bloco G, 2º andar<br>Trindade — Florianópolis/SC<br>CEP: 88040-900<br>Brasil">Rua Roberto Sampaio Gonzaga<br>Centro Socioeconômico, Bloco G, 2º andar<br>Trindade — Florianópolis/SC<br>CEP: 88040-900<br>Brazil</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 BICCe</span>
+      <div class="footer-links">
+        <a href="#" data-en="Employees" data-pt="Equipe">Employees</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Instagram</a>
+        <a href="#">Bluesky</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+window.addEventListener('DOMContentLoaded', function(){ setLang(currentLang); });
+</script><script>
+let currentLang='pt';
+function setLang(lang){
+  currentLang=lang;
+  document.documentElement.lang=lang;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.trim().toLowerCase()===lang));
+  document.querySelectorAll('[data-'+lang+']').forEach(el=>el.innerHTML=el.getAttribute('data-'+lang));
+}
+function openMobileNav(){document.getElementById('mobileNav').classList.add('open');document.body.style.overflow='hidden';}
+function closeMobileNav(){document.getElementById('mobileNav').classList.remove('open');document.body.style.overflow='';}
+const secs=document.querySelectorAll('section[id],div[id]');
+w

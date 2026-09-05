@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partners — BICCe</title>
+<style>
+
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+:root {
+  --teal: #007C7A;
+  --teal-dark: #005F5D;
+  --teal-light: #009E9B;
+  --dark: #1D1D1D;
+  --gray-800: #333333;
+  --gray-600: #555555;
+  --gray-400: #999999;
+  --gray-200: #E0E0E0;
+  --gray-100: #F2F2F2;
+  --white: #FFFFFF;
+  --font: 'Libre Franklin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); color: var(--dark); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+.container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+/* ─── HEADER ─── */
+.site-header { background: var(--white); border-bottom: 3px solid var(--teal); position: sticky; top: 0; z-index: 100; }
+.header-top { display: flex; align-items: center; justify-content: space-between; padding: 12px 24px; max-width: 1140px; margin: 0 auto; }
+.logo-link { display: flex; align-items: center; text-decoration: none; color: var(--dark); }
+.logo-text-block { display: flex; flex-direction: column; }
+.logo-name { font-size: 1.5rem; font-weight: 800; color: var(--teal); letter-spacing: -0.02em; line-height: 1; }
+.logo-sub { font-size: 0.6rem; color: var(--gray-600); letter-spacing: 0.02em; max-width: 280px; line-height: 1.3; }
+.logo-link svg { height: 40px; width: auto; }
+.header-right { display: flex; align-items: center; gap: 16px; }
+.lang-switch { display: flex; border: 1px solid var(--gray-200); border-radius: 4px; overflow: hidden; }
+.lang-btn { background: none; border: none; padding: 5px 12px; font-family: var(--font); font-size: 0.75rem; font-weight: 600; color: var(--gray-600); cursor: pointer; transition: 0.2s; }
+.lang-btn.active { background: var(--teal); color: var(--white); }
+.lang-btn:not(.active):hover { background: var(--gray-100); }
+.search-btn { background: none; border: none; cursor: pointer; padding: 6px; color: var(--gray-600); transition: 0.2s; }
+.search-btn:hover { color: var(--teal); }
+.search-btn svg { width: 20px; height: 20px; }
+.mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+.mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--dark); margin: 5px 0; }
+
+/* ─── NAV ─── */
+
+.main-nav { background: var(--gray-100); border-bottom: 1px solid var(--gray-200); }
+.nav-inner { display: flex; gap: 0; max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+.nav-inner a { text-decoration: none; color: var(--gray-800); font-size: 0.88rem; font-weight: 500; padding: 12px 18px; transition: 0.2s; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+.nav-inner a:hover { color: var(--teal); background: rgba(0,124,122,0.04); }
+.nav-inner a.active { color: var(--teal); border-bottom-color: var(--teal); }
+
+/* ─── PAGE HERO ─── */
+.page-hero { background: var(--teal); padding: 56px 0 48px; }
+.page-hero h1 { font-size: 2.4rem; font-weight: 800; color: var(--white); line-height: 1.15; margin-bottom: 12px; }
+.page-hero p { font-size: 1.05rem; color: rgba(255,255,255,0.8); max-width: 640px; line-height: 1.6; }
+.breadcrumb { font-size: 0.8rem; color: rgba(255,255,255,0.55); margin-bottom: 16px; }
+.breadcrumb a { color: rgba(255,255,255,0.7); text-decoration: none; }
+.breadcrumb a:hover { color: var(--white); }
+
+/* ─── SECTIONS ─── */
+.section { padding: 48px 0; }
+.section--gray { background: var(--gray-100); }
+.section-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; }
+.section-header h2 { font-size: 1.55rem; font-weight: 800; color: var(--dark); }
+
+/* ─── FOOTER ─── */
+.site-footer { background: var(--dark); color: rgba(255,255,255,0.6); padding: 48px 0 24px; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.4fr; gap: 36px; margin-bottom: 36px; }
+.footer-brand p { font-size: 0.85rem; line-height: 1.55; max-width: 280px; }
+.site-footer h4 { color: var(--white); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; }
+.site-footer ul { list-style: none; }
+.site-footer ul li { margin-bottom: 8px; }
+.site-footer ul a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: 0.2s; }
+.site-footer ul a:hover { color: var(--white); }
+.footer-contact p { font-size: 0.82rem; margin-bottom: 4px; }
+.footer-contact a { color: rgba(255,255,255,0.7); text-decoration: none; }
+.footer-contact a:hover { color: var(--white); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; }
+.footer-links { display: flex; gap: 16px; }
+.footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-weight: 500; transition: 0.2s; }
+.footer-links a:hover { color: var(--white); }
+
+/* ─── MOBILE NAV ─── */
+.mobile-nav { display: none; position: fixed; inset: 0; background: rgba(0,124,122,0.97); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+.mobile-nav.open { display: flex; }
+.mobile-nav a { color: var(--white); text-decoration: none; font-size: 1.3rem; font-weight: 700; padding: 10px 24px; }
+.mobile-nav-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: var(--white); font-size: 2rem; cursor: pointer; }
+
+@media (max-width: 900px) {
+  .main-nav { display: none; }
+  .mobile-toggle { display: block; }
+  .page-hero h1 { font-size: 1.8rem; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .page-hero h1 { font-size: 1.5rem; }
+}
+
+
+.about-intro { font-size: 1.1rem; color: var(--gray-800); line-height: 1.7; max-width: 800px; margin-bottom: 40px; }
+.values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px; }
+.value-card { padding: 28px; border-radius: 6px; border: 1px solid var(--gray-200); }
+.value-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--teal); }
+.value-card p { font-size: 0.88rem; color: var(--gray-600); line-height: 1.55; }
+.timeline { position: relative; padding-left: 32px; border-left: 3px solid var(--teal); margin-top: 32px; }
+.timeline-item { position: relative; padding-bottom: 28px; }
+.timeline-item::before { content: ''; position: absolute; left: -38px; top: 4px; width: 12px; height: 12px; background: var(--teal); border-radius: 50%; border: 3px solid var(--white); }
+.timeline-item h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+.timeline-item .year { font-size: 0.82rem; color: var(--teal); font-weight: 700; margin-bottom: 4px; }
+.timeline-item p { font-size: 0.88rem; color: var(--gray-600); line-height: 1.5; }
+.stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; margin-top: 32px; }
+.stat-item .stat-num { font-size: 2.2rem; font-weight: 800; color: var(--teal); }
+.stat-item .stat-label { font-size: 0.82rem; color: var(--gray-600); }
+@media (max-width: 700px) { .values-grid, .stats-row { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 500px) { .values-grid, .stats-row { grid-template-columns: 1fr; } }
+
+
+
+/* ─── PARTNERS PAGE ─── */
+.partner-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.partner-card {
+  padding: 24px 16px; text-align: center; border: 1px solid var(--gray-200);
+  border-radius: 6px; transition: 0.2s;
+}
+.partner-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); border-color: var(--teal); }
+.partner-logo { height: 60px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+.partner-logo svg { height: 100%; width: auto; max-width: 100%; }
+.partner-card h3 { font-size: 0.85rem; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+.partner-card p { font-size: 0.75rem; color: var(--gray-600); line-height: 1.4; }
+.feat-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+.feat-badge {
+  padding: 8px 18px; border: 1px solid var(--gray-200); border-radius: 4px;
+  font-size: 0.78rem; font-weight: 700; color: #3A3F44; letter-spacing: 0.03em;
+}
+.category-header {
+  font-size: 1.1rem; font-weight: 800; color: var(--teal);
+  margin-top: 40px; margin-bottom: 16px; padding-bottom: 8px;
+  border-bottom: 2px solid var(--teal);
+}
+.category-header:first-child { margin-top: 0; }
+@media (max-width: 900px) { .partner-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 600px) { .partner-grid { grid-template-columns: repeat(2, 1fr); } }
+
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-top">
+    <a href="bicee-pt-website.html" class="logo-link">
+      <div class="logo-text-block">
+        <span class="logo-name">BICCe</span>
+        <span class="logo-sub" data-en="Brazilian Institute for Climate and Environmental Economics" data-pt="Instituto Brasileiro de Economia Climática e Ambiental">Brazilian Institute for Climate and Environmental Economics</span>
+      </div>
+    </a>
+    <div class="header-right">
+      <div class="lang-switch">
+        <button class="lang-btn" onclick="window.location.href='bicee-partners.html'">EN</button>
+        <button class="lang-btn" onclick="window.location.href='bicee-pt-about.html'">PT</button>
+      </div>
+      <button class="search-btn" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></button>
+      <button class="mobile-toggle" onclick="openMobileNav()" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<nav class="main-nav">
+  <div class="nav-inner">
+    <a href="bicee-pt-website.html" data-en="Our expertise" data-pt="Especialidades">Our expertise</a>
+    <a href="bicee-pt-projects.html" data-en="Projects" data-pt="Projetos">Projects</a>
+    <a href="bicee-pt-publications.html" data-en="Publications" data-pt="Publicações">Publications</a>
+    <a href="bicee-pt-employees.html" data-en="Employees" data-pt="Equipe">Employees</a>
+    <a href="bicee-pt-research.html" data-en="Research groups" data-pt="Grupos de pesquisa">Research groups</a>
+    <a href="bicee-pt-about.html" class="active" data-en="About" data-pt="Sobre">About</a>
+    <a href="bicee-pt-events.html" data-en="Events" data-pt="Eventos">Events</a>
+    <a href="bicee-pt-newsletter.html" data-en="Newsletter" data-pt="Newsletter">Newsletter</a>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="closeMobileNav()">&times;</button>
+  <a href="bicee-pt-website.html" onclick="closeMobileNav()" data-en="Our expertise" data-pt="Especialidades">Our expertise</a>
+  <a href="bicee-pt-projects.html" onclick="closeMobileNav()" data-en="Projects" data-pt="Projetos">Projects</a>
+  <a href="bicee-pt-publications.html" onclick="closeMobileNav()" data-en="Publications" data-pt="Publicações">Publications</a>
+  <a href="bicee-pt-employees.html" onclick="closeMobileNav()" data-en="Employees" data-pt="Equipe">Employees</a>
+  <a href="bicee-pt-research.html" onclick="closeMobileNav()" data-en="Research groups" data-pt="Grupos de pesquisa">Research groups</a>
+  <a href="bicee-pt-partners.html" onclick="closeMobileNav()" data-en="Partners" data-pt="Parceiros">Partners</a>
+  <a href="bicee-pt-about.html" onclick="closeMobileNav()" data-en="About" data-pt="Sobre">About</a>
+  <a href="bicee-pt-events.html" onclick="closeMobileNav()" data-en="Events" data-pt="Eventos">Events</a>
+  <a href="bicee-pt-newsletter.html" onclick="closeMobileNav()" data-en="Newsletter" data-pt="Newsletter">Newsletter</a>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="bicee-pt-website.html" data-en="Home" data-pt="Início">Home</a> / <span data-en="Partners" data-pt="Parceiros">Partners</span></div>
+    <h1 data-en="Partners" data-pt="Parceiros">Partners</h1>
+    <p data-en="BICCe collaborates with leading research institutions, multilateral organisations, and Brazilian universities to advance climate and environmental economics." data-pt="O BICCe colabora com instituições de pesquisa líderes, organizações multilaterais e universidades brasileiras para avançar a economia climática e ambiental.">BICCe collaborates with leading research institutions, multilateral organisations, and Brazilian universities to advance climate and environmental economics.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header"><h2 data-en="Featured collaborations" data-pt="Colaborações em destaque">Featured collaborations</h2></div>
+    <div class="feat-row">
+      <span class="feat-badge">PIK POTSDAM</span>
+      <span class="feat-badge">LSE GRANTHAM</span>
+      <span class="feat-badge">COLUMBIA SIPA</span>
+      <span class="feat-badge">CICERO</span>
+      <span class="feat-badge">WORLD BANK</span>
+      <span class="feat-badge">FAPESP</span>
+    </div>
+  </div>
+</section>
+
+<section class="section section--gray">
+  <div class="container">
+    <div class="category-header" data-en="International Partners" data-pt="Parceiros Internacionais">International Partners</div>
+    <div class="partner-grid">
+      <div class="partner-card">
+        <div class="partner-logo"><svg viewBox="0 0 140 80" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Libre Franklin,Helvetica,Arial,sans-serif" font-weight="700" font-size="17" fill="#3A3F44" letter-spacing="0.5">PIK POTSDAM</text></svg></div>
+        <h3>PIK POTSDAM</h3>
+        <p data-en="Potsdam Institute for Climate Impact Research" data-pt="Instituto Potsdam para Pesquisa do Impacto Climático">Potsdam Institute for Climate Impact Research</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><svg viewBox="0 0 140 80" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Libre Franklin,Helvetica,Arial,sans-serif" font-weight="700" font-size="17" fill="#3A3F44" letter-spacing="0.5">LSE GRANTHAM</text></svg></div>
+        <h3>LSE GRANTHAM</h3>
+        <p data-en="Grantham Research Institute, London School of Economics" data-pt="Instituto Grantham, London School of Economics">Grantham Research Institute, London School of Economics</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><svg viewBox="0 0 140 80" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Libre Franklin,Helvetica,Arial,sans-serif" font-weight="700" font-size="17" fill="#3A3F44" letter-spacing="0.5">COLUMBIA SIPA</text></svg></div>
+        <h3>COLUMBIA SIPA</h3>
+        <p data-en="School of International and Public Affairs, Columbia University" data-pt="Escola de Assuntos Internacionais e Públicos, Columbia University">School of International and Public Affairs, Columbia University</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><svg viewBox="0 0 140 80" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Libre Franklin,Helvetica,Arial,sans-serif" font-weight="700" font-size="22" fill="#3A3F44" letter-spacing="0.5">CICERO</text></svg></div>
+        <h3>CICERO</h3>
+        <p data-en="Center for International Climate Research, Oslo" data-pt="Centro de Pesquisa Climática Internacional, Oslo">Center for International Climate Research, Oslo</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><svg viewBox="0 0 140 80" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Libre Franklin,Helvetica,Arial,sans-serif" font-weight="700" font-size="17" fill="#3A3F44" letter-spacing="0.5">WORLD BANK</text></svg></div>
+        <h3>WORLD BANK</h3>
+        <p data-en="World Bank Climate Change Group" data-pt="Grupo de Mudanças Climáticas do Banco Mundial">World Bank Climate Change Group</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><svg viewBox="0 0 140 80" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Libre Franklin,Helvetica,Arial,sans-serif" font-weight="700" font-size="28" fill="#3A3F44" letter-spacing="0.5">IDB</text></svg></div>
+        <h3>IDB</h3>
+        <p data-en="Inter-American Development Bank" data-pt="Banco Interamericano de Desenvolvimento">Inter-American Development Bank</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><svg viewBox="0 0 140 80" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Libre Franklin,Helvetica,Arial,sans-serif" font-weight="700" font-size="28" fill="#3A3F44" letter-spacing="0.5">UNEP</text></svg></div>
+        <h3>UNEP</h3>
+        <p data-en="United Nations Environment Programme" data-pt="Programa das Nações Unidas para o Meio Ambiente">United Nations Environment Programme</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><svg viewBox="0 0 140 80" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Libre Franklin,Helvetica,Arial,sans-serif" font-weight="700" font-size="28" fill="#3A3F44" letter-spacing="0.5">GCF</text></svg></div>
+        <h3>GCF</h3>
+        <p data-en="Green Climate Fund" data-pt="Fundo Verde para o Clima">Green Climate Fund</p>
+      </div>
+    </div>
+
+    <div class="category-header" data-en="National Partners" data-pt="Parceiros Nacionais">National Partners</div>
+    <div class="partner-grid">
+      <div class="partner-card">
+        <div class="partner-logo"><svg viewBox="0 0 140 80" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Libre Franklin,Helvetica,Arial,sans-serif" font-weight="700" font-size="28" fill="#3A3F44" letter-spacing="0.5">USP</text></svg></div>
+        <h3>USP</h3>
+        <p data-en="Universidade de São Paulo" data-pt="Universidade de São Paulo">Universidade de São Paulo</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><svg viewBox="0 0 140 80" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Libre Franklin,Helvetica,Arial,sans-serif" font-weight="700" font-size="22" fill="#3A3F44" letter-spacing="0.5">UNICAMP</text></svg></div>
+        <h3>UNICAMP</h3>
+        <p data-en="Universidade Estadual de Campinas" data-pt="Universidade Estadual de Campinas">Universidade Estadual de Campinas</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><svg viewBox="0 0 140 80" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Libre Franklin,Helvetica,Arial,sans-serif" font-weight="700" font-size="28" fill="#3A3F44" letter-spacing="0.5">FGV</text></svg></div>
+        <h3>FGV</h3>
+        <p data-en="Fundação Getulio Vargas" data-pt="Fundação Getulio Vargas">Fundação Getulio Vargas</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><svg viewBox="0 0 140 80" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Libre Franklin,Helvetica,Arial,sans-serif" font-weight="700" font-size="28" fill="#3A3F44" letter-spacing="0.5">UFSC</text></svg></div>
+        <h3>UFSC</h3>
+        <p data-en="Universidade Federal de Santa Catarina" data-pt="Universidade Federal de Santa Catarina">Universidade Federal de Santa Catarina</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><svg viewBox="0 0 140 80" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Libre Franklin,Helvetica,Arial,sans-serif" font-weight="700" font-size="28" fill="#3A3F44" letter-spacing="0.5">INPE</text></svg></div>
+        <h3>INPE</h3>
+        <p data-en="Instituto Nacional de Pesquisas Espaciais" data-pt="Instituto Nacional de Pesquisas Espaciais">Instituto Nacional de Pesquisas Espaciais</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><svg viewBox="0 0 140 80" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Libre Franklin,Helvetica,Arial,sans-serif" font-weight="700" font-size="22" fill="#3A3F44" letter-spacing="0.5">EMBRAPA</text></svg></div>
+        <h3>EMBRAPA</h3>
+        <p data-en="Empresa Brasileira de Pesquisa Agropecuária" data-pt="Empresa Brasileira de Pesquisa Agropecuária">Empresa Brasileira de Pesquisa Agropecuária</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><svg viewBox="0 0 140 80" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Libre Franklin,Helvetica,Arial,sans-serif" font-weight="700" font-size="22" fill="#3A3F44" letter-spacing="0.5">FAPESP</text></svg></div>
+        <h3>FAPESP</h3>
+        <p data-en="Fundação de Amparo à Pesquisa do Estado de São Paulo" data-pt="Fundação de Amparo à Pesquisa do Estado de São Paulo">Fundação de Amparo à Pesquisa do Estado de São Paulo</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><svg viewBox="0 0 140 80" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Libre Franklin,Helvetica,Arial,sans-serif" font-weight="700" font-size="28" fill="#3A3F44" letter-spacing="0.5">CNI</text></svg></div>
+        <h3>CNI</h3>
+        <p data-en="Confederação Nacional da Indústria" data-pt="Confederação Nacional da Indústria">Confederação Nacional da Indústria</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><svg viewBox="0 0 140 80" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Libre Franklin,Helvetica,Arial,sans-serif" font-weight="700" font-size="28" fill="#3A3F44" letter-spacing="0.5">IPEA</text></svg></div>
+        <h3>IPEA</h3>
+        <p data-en="Instituto de Pesquisa Econômica Aplicada" data-pt="Instituto de Pesquisa Econômica Aplicada">Instituto de Pesquisa Econômica Aplicada</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><svg viewBox="0 0 140 80" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Libre Franklin,Helvetica,Arial,sans-serif" font-weight="700" font-size="22" fill="#3A3F44" letter-spacing="0.5">BNDES</text></svg></div>
+        <h3>BNDES</h3>
+        <p data-en="Banco Nacional de Desenvolvimento Econômico e Social" data-pt="Banco Nacional de Desenvolvimento Econômico e Social">Banco Nacional de Desenvolvimento Econômico e Social</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <p style="font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:8px;">BICCe</p>
+        <p data-en="Brazilian Institute for Climate and Environmental Economics. Independent, interdisciplinary, evidence-based research for sustainable development." data-pt="Instituto Brasileiro de Economia Climática e Ambiental. Pesquisa independente, interdisciplinar e baseada em evidências para o desenvolvimento sustentável.">Brazilian Institute for Climate and Environmental Economics. Independent, interdisciplinary, evidence-based research for sustainable development.</p>
+      </div>
+      <div>
+        <h4 data-en="Research" data-pt="Pesquisa">Research</h4>
+        <ul>
+          <li><a href="bicee-pt-website.html" data-en="Our expertise" data-pt="Especialidades">Our expertise</a></li>
+          <li><a href="bicee-pt-projects.html" data-en="Projects" data-pt="Projetos">Projects</a></li>
+          <li><a href="bicee-pt-publications.html" data-en="Publications" data-pt="Publicações">Publications</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-en="Institute" data-pt="Instituto">Institute</h4>
+        <ul>
+          <li><a href="bicee-pt-about.html" data-en="About BICCe" data-pt="Sobre o BICCe">About BICCe</a></li>
+          <li><a href="bicee-pt-partners.html" class="active" data-en="Partners" data-pt="Parceiros">Partners</a></li>
+          <li><a href="bicee-pt-employees.html" data-en="Employees" data-pt="Equipe">Employees</a></li>
+          <li><a href="bicee-pt-events.html" data-en="Events" data-pt="Eventos">Events</a></li>
+          <li><a href="bicee-pt-newsletter.html" data-en="Newsletter" data-pt="Newsletter">Newsletter</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4 data-en="Contact" data-pt="Contato">Contact</h4>
+        <p data-en="Switchboard:" data-pt="Telefone:">Switchboard:</p>
+        <p><a href="tel:+554837219901">+55 (48) 3721-9901</a></p>
+        <p style="margin-top:8px"><a href="/cdn-cgi/l/email-protection#5e373038311e3c373d3d3b70312c39703c2c"><span class="__cf_email__" data-cfemail="523b3c343d12303b3131377c3d20357c3020">[email&#160;protected]</span></a></p>
+        <p style="margin-top:10px" data-en="Rua Roberto Sampaio Gonzaga<br>Centro Socioeconômico, Bloco G, 2º andar<br>Trindade — Florianópolis/SC<br>CEP: 88040-900" data-pt="Rua Roberto Sampaio Gonzaga<br>Centro Socioeconômico, Bloco G, 2º andar<br>Trindade — Florianópolis/SC<br>CEP: 88040-900">Rua Roberto Sampaio Gonzaga<br>Centro Socioeconômico, Bloco G, 2º andar<br>Trindade — Florianópolis/SC<br>CEP: 88040-900</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 BICCe</span>
+      <div class="footer-links">
+        <a href="#">LinkedIn</a>
+        <a href="#">Instagram</a>
+        <a href="#">Bluesky</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
